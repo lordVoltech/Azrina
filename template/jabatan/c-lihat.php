@@ -10,10 +10,9 @@
                 <table class="table table-stripped">
                     <thead>
                         <tr>
-                            <th>NO Polisi</th>
+                            <th>NO</th>
                             <th>jabatan</th>
-                            <th>cc</th>
-                            <th>Pemilik</th>
+                            <th>gaji</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
