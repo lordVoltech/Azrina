@@ -1,6 +1,6 @@
 <?php
     include 'koneksi.php';
-    $query = mysqli_query($conn, "Select*from barang_jasa where id_barang_jasa = '$_GET[id_barang_jasa]'");
+    $query = mysqli_query($conn, "Select*from proyek where id_proyek = '$_GET[id_proyek]'");
     $data = mysqli_fetch_array($query);
             
 ?>
@@ -18,30 +18,30 @@
 
     <tr>
         <td> id Item </td>
-        <td> <input class="form-control" type="number" name="id-item" value="<?php echo $data['id_barang_jasa'];?>" readonly> </td>
+        <td> <input class="form-control" type="number" name="id-item" value="<?php echo $data['id_proyek'];?>" readonly> </td>
     </tr>
     <tr>
         <td> Nama Item </td>
-        <td> <input class="form-control" type="text" name="nama" value="<?php echo $data['nama_barang_jasa'];?>" > </td>
+        <td> <input class="form-control" type="text" name="nama" value="<?php echo $data['nama_proyek'];?>" > </td>
     </tr>
     <tr>
         <td> Harga </td>
-        <td> <input class="form-control" type="number" name="harga" value="<?php echo $data['harga_satuan'];?>" > </td>
+        <td> <input class="form-control" type="number" name="harga" value="<?php echo $data['lokasi'];?>" > </td>
     </tr>
 
     <tr>
-        <td> Jenis </td>
+        <td> jenis_proyek </td>
         <td>
             <select class="form-control" name="tipe" id="tipe">
-            <option value="barang" <?= ($data['jenis'] == 'barang') ? 'selected' : '' ?>>Barang</option>
-            <option value="jasa" <?= ($data['jenis'] == 'jasa') ? 'selected' : '' ?>>Jasa</option>
+            <option value="barang" <?= ($data['jenis_proyek'] == 'barang') ? 'selected' : '' ?>>Barang</option>
+            <option value="jasa" <?= ($data['jenis_proyek'] == 'jasa') ? 'selected' : '' ?>>Jasa</option>
             </select>
         </td>
     </tr>
 
     <tr>
-        <td> Stok </td>
-        <td> <input class="form-control" type="stok" name="stok" value="<?php echo $data['stok'];?>" > </td>
+        <td> tanggal </td>
+        <td> <input class="form-control" type="tanggal" name="tanggal" value="<?php echo $data['tanggal'];?>" > </td>
     </tr>
 
     <tr>
@@ -66,9 +66,9 @@ if (isset($_POST['proses'])){
     $nama = $_POST['nama'];
     $harga = $_POST['harga'];
     $tipe= $_POST['tipe'];
-    $stok= $_POST['stok'];
+    $tanggal= $_POST['tanggal'];
     
-    mysqli_query($conn, "UPDATE barang_jasa SET nama_barang_jasa='$nama', harga_satuan='$harga', jenis='$tipe', stok='$stok' WHERE id_barang_jasa= $id");
+    mysqli_query($conn, "UPDATE proyek SET nama_proyek='$nama', lokasi='$harga', jenis_proyek='$tipe', tanggal='$tanggal' WHERE id_proyek= $id");
     echo"<script>window.location.href = 'index.php?folder=barang-jasa&page=bj-lihat';</script>";
 }
 ?>

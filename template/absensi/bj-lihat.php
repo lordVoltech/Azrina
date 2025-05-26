@@ -13,8 +13,8 @@
         <th>No</th>
         <th>Nama</th>
         <th>Harga</th>
-        <th>Jenis</th>
-        <th>Stok</th>
+        <th>jenis_proyek</th>
+        <th>tanggal</th>
         <th>Aksi</th>
     </tr>
     <tr>
@@ -24,18 +24,18 @@
             $g = isset($_GET['g']) ? $_GET['g'] : 1;
             $start = ($g - 1) * $limit;
         
-            $query = mysqli_query($conn, "SELECT * FROM barang_jasa LIMIT $start, $limit");
+            $query = mysqli_query($conn, "SELECT * FROM proyek LIMIT $start, $limit");
             while ($data=mysqli_fetch_array($query)){
                 ?>
                 <tr>
-                    <td><?php echo $data['id_barang_jasa'] ;?></td>
-                    <td><?php echo $data['nama_barang_jasa'] ;?></td>
-                    <td><?php echo $data['harga_satuan'] ;?></td>
-                    <td><?php echo $data['jenis'] ;?></td>
-                    <td><?php echo $data['stok'] ;?></td>
+                    <td><?php echo $data['id_proyek'] ;?></td>
+                    <td><?php echo $data['nama_proyek'] ;?></td>
+                    <td><?php echo $data['jenis_proyek'] ;?></td>
+                    <td><?php echo $data['lokasi'] ;?></td>
+                    <td><?php echo $data['tanggal'] ;?></td>
                     <td>
-                    <a class="badge badge-primary" href="index.php?folder=barang-jasa&page=bj-ubah&id_barang_jasa=<?php echo $data['id_barang_jasa'];?>" >Edit</a> |
-                    <a class="badge badge-danger" href="barang-jasa/bj-hapus.php?id_barang_jasa=<?php echo $data['id_barang_jasa']; ?>" onclick="return confirm('Anda yakin ingin menghapus data ini?')">Hapus</a>				
+                    <a class="badge badge-primary" href="index.php?folder=barang-jasa&page=bj-ubah&id_proyek=<?php echo $data['id_proyek'];?>" >Edit</a> |
+                    <a class="badge badge-danger" href="barang-jasa/bj-hapus.php?id_proyek=<?php echo $data['id_proyek']; ?>" onclick="return confirm('Anda yakin ingin menghapus data ini?')">Hapus</a>				
                     </td>
                 </tr>
                 </tr>
@@ -45,7 +45,7 @@
 
         <!-- <div class="pagination">
             <?php
-            $query_total = mysqli_query($conn, "SELECT COUNT(*) as total FROM barang");
+            $query_total = mysqli_query($conn, "SELECT COUNT(*) as total FROM proyek");
             $data_total = mysqli_fetch_assoc($query_total);
             $total_pages = ceil($data_total['total'] / $limit);
 

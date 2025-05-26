@@ -8,27 +8,51 @@
 <form action="" method="post">
 <table class="table table">
     <tr>
-        <td> Nama Item </td>
+        <td> ID proyek </td>
+        <td> <input class="form-control"type="number" name="id"> </td>
+    </tr>
+    <tr>
+        <td> Nama proyek </td>
         <td> <input class="form-control"type="text" name="nama"> </td>
     </tr>
     <tr>
-        <td> Harga </td>
-        <td> <input class="form-control" type="number" name="harga"> </td>
-    </tr>
-
-    <tr>
-        <td> Jenis </td>
+        <td> Klien </td>
         <td>
-            <select class="form-control" name="tipe" id="tipe">
-            <option value="barang">Barang</option>
-            <option value="jasa">Jasa</option>
-            </select>
+            <select class="form-control" name="klien" id="klien">
+            <option value="">--Pilih--</option>
+            <?php 
+            include 'koneksi.php';
+
+            // Misalnya variabel ini berisi id_klien dari database yang mau diedit
+            $id_klien_terpilih = $pekerja['id_klien']; // kamu harus ambil data pekerja dulu sebelumnya
+
+            $hug = mysqli_query($conn, "SELECT * FROM klien") or die(mysqli_error($conn));
+            while ($data = mysqli_fetch_array($hug)) {
+                $selected = ($data['id_klien'] == $id_klien_terpilih) ? 'selected' : '';
+                echo "<option value='{$data['id_klien']}' $selected>{$data['nama']}</option>";
+            }
+            ?>
+        </select>
         </td>
     </tr>
+    <tr>
+        <td> lokasi </td>
+        <td> <input class="form-control" type="text" name="lokasi"> </td>
+    </tr>
+    <tr>
+        <td> tanggal </td>
+        <td> <input class="form-control" type="text" name="tanggal"> </td>
+    </tr>
 
     <tr>
-        <td> Stok </td>
-        <td> <input class="form-control" type="stok" name="stok"> </td>
+        <td> jenis_proyek </td>
+        <td>
+            <select class="form-control" name="tipe" id="tipe">
+            <option value="bangun_rumah">bangun Rumah</option>
+            <option value="renovasi">renovasi</option>
+            <option value="bangun_gedung">bangun gedung</option>
+            </select>
+        </td>
     </tr>
 
     <tr>
@@ -51,12 +75,14 @@
 if (isset($_POST['proses'])){
     include 'koneksi.php';
   
+    $id = $_POST['id'];
     $nama = $_POST['nama'];
-    $harga = $_POST['harga'];
-    $tipe= $_POST['tipe'];
-    $stok= $_POST['stok'];
+    $klien = $_POST['klien'];
+    $tipe = $_POST['tipe'];
+    $tanggal = $_POST['tanggal'];
+    $lokasi = $_POST['lokasi'];
     
-    mysqli_query($conn, "INSERT INTO barang_jasa VALUES('','$nama','$harga','$tipe','$stok')");
+    mysqli_query($conn, "INSERT INTO proyek VALUES('$id','$klien','$nama','$tipe','$lokasi','$tanggal')");
     echo"<script>window.location.href = 'index.php?folder=barang-jasa&page=bj-lihat';</script>";
 }
 ?>
