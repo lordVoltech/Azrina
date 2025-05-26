@@ -213,6 +213,7 @@ $file = $folder . '/' . $page . '.php';
                           <li class="nav-item"><a class="nav-link" href="index.php?folder=klien&page=c-lihat">Data klien</a></li>
                           <li class="nav-item"><a class="nav-link" href="index.php?folder=jabatan&page=c-lihat">Data jabatan</a></li>
                           <li class="nav-item"><a class="nav-link" href="index.php?folder=pekerja&page=bj-lihat">Data pekerja</a></li>
+                          <li class="nav-item"><a class="nav-link" href="index.php?folder=absensi&page=bj-lihat">Data absensi</a></li>
                           <li class="nav-item"><a class="nav-link" href="index.php?folder=proyek&page=bj-lihat">Data proyek</a></li>
                       </ul>
                   </div>
