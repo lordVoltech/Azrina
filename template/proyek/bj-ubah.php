@@ -80,7 +80,7 @@
 
 <?php
     if (isset($_POST['proses'])) {
-        include '../koneksi.php';
+        include 'koneksi.php';
     
         $id      = $_POST['id'];
         $nama    = $_POST['nama'];
