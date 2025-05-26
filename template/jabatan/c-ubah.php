@@ -13,32 +13,19 @@
 <form action="" method="post">
 <table class="table table-stripped">
     <h4>FORM TAMBAH</h4>
+    
     <tr>
-        <td> No Polisi </td>
-        <td> <input class="form-control" type="text" name="id" value="<?php echo $data['no_pol'];?>"> </td>
+        <td> id Jabatan </td>
+        <td> <input class="form-control" type="text" name="id" value="<?php echo $data['id_jabatan'];?>" readonly> </td>
     </tr>
     <tr>
-        <td> jabatan </td>
-        <td> <input class="form-control" type="text" name="nama" value="<?php echo $data['jenis_jabatan'];?>"> </td>
+        <td> nama jabatan baru </td>
+        <td> <input class="form-control" type="text" name="nama" value="<?php echo $data['namajabatan'];?>"> </td>
     </tr>
     <tr>
-        <td> CC Mesin </td>
-        <td> <input class="form-control" type="text" name="tipe" value="<?php echo $data['jenis_cc'];?>"> </td>
+        <td> gaji pokok(harian) </td>
+        <td> <input class="form-control" type="text" name="gaji" value="<?php echo $data['gajipokok'];?>"> </td>
     </tr>
-
-    <tr>
-        <td> Pemilik <td>
-         <select class="form-control" name="pemilik" style="width:170px;">
-        <?php include 'koneksi.php';
-        $ambilpelanggan=mysqli_query($conn, "SELECT * FROM costumer");
-        while ($pelanggan = mysqli_fetch_array($ambilpelanggan)) {
-            $selected = ($data['id_cos'] == $pelanggan['id_cos']) ? 'selected' : '';
-            echo "<option value='$pelanggan[id_cos]' $selected>$pelanggan[nama_cos]</option>";
-        }
-        ?>
-        </td>
-        </select>
-  </td>
 
     <tr>
         <td><a class="badge badge-danger" href="index.php?folder=jabatan&page=c-lihat">Batal</a></td>
