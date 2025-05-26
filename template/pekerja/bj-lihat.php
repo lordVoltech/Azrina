@@ -6,8 +6,8 @@
             <div class="card-body">
 <form>
 
-<h4>TABEL Pegawai</h4>
-<a class="badge badge-success" href="index.php?folder=pegawai&page=bj-tambah">Tambah</a>
+<h4>TABEL PEKERJA</h4>
+<a class="badge badge-success" href="index.php?folder=pekerja&page=bj-tambah">Tambah</a>
 <!-- <a class="kembali" href="../menu.php">Kembali</a> -->
 <table class="table table-stripped" width="100%">
     <thead>
@@ -15,6 +15,9 @@
         <th>No</th>
         <th>Nama</th>
         <th>Jabatan</th>
+        <th>No HP</th>
+        <th>proyek</th>
+        <th>rekening</th>
         <th>aksi</th>
     </tr>
     </thead>
@@ -25,16 +28,19 @@
             $hu = isset($_GET['hu']) ? $_GET['hu'] : 1;
             $start = ($hu - 1) * $limit;
         
-            $query = mysqli_query($conn, "SELECT * FROM pegawai LIMIT $start, $limit");
+            $query = mysqli_query($conn, "SELECT * FROM pekerja LIMIT $start, $limit");
             while ($data=mysqli_fetch_array($query)){
                 ?>
                 <tr>
-                    <td><?php echo $data['id_pegawai'] ;?></td>
-                    <td><?php echo $data['nama'] ;?></td>
-                    <td><?php echo $data['jabatan'] ;?></td>
+                    <td><?php echo $data['id_pekerja'] ;?></td>
+                    <td><?php echo $data['nama_pekerja'] ;?></td>
+                    <td><?php echo $data['id_jabatan'] ;?></td>
+                    <td><?php echo $data['no_hp'] ;?></td>
+                    <td><?php echo $data['id_proyek'] ;?></td>
+                    <td><?php echo $data['rekening'] ;?></td>
                     <td>
-                    <a class="badge badge-primary" href="index.php?folder=pegawai&page=bj-ubah&id_pegawai=<?php echo $data['id_pegawai'];?>" >Edit</a>
-                    <a class="badge badge-danger" href="pegawai/bj-hapus.php?id_pegawai=<?php echo $data['id_pegawai'];?>" onclick="return confirm('Anda yakin ingin menghapus data ini?')">Hapus</a>				
+                    <a class="badge badge-primary" href="index.php?folder=pekerja&page=bj-ubah&id_pekerja=<?php echo $data['id_pekerja'];?>" >Edit</a>
+                    <a class="badge badge-danger" href="pekerja/bj-hapus.php?id_pekerja=<?php echo $data['id_pekerja'];?>" onclick="return confirm('Anda yakin ingin menghapus data ini?')">Hapus</a>				
                     </td>
                 </tr>
                 </tr>
@@ -44,7 +50,7 @@
 
         <!-- <div class="pagination">
             <?php
-            $query_total = mysqli_query($conn, "SELECT COUNT(*) as total FROM barang");
+            $query_total = mysqli_query($conn, "SELECT COUNT(*) as total FROM pekerja");
             $data_total = mysqli_fetch_assoc($query_total);
             $total_pages = ceil($data_total['total'] / $limit);
 
