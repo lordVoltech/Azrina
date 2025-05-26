@@ -20,11 +20,11 @@
     </tr>
     <tr>
         <td> nama pekerja </td>
-        <td> <input class="form-control" type="text" name="nama" value="<?php echo $data['nama'];?>"> </td>
+        <td> <input class="form-control" type="text" name="nama" value="<?php echo $data['nama_pekerja'];?>"> </td>
     </tr>
     <tr>
         <td> Nomor HP pekerja </td>
-        <td> <input class="form-control" type="text" name="nohp" value="<?php echo $data['nohp'];?>"> </td>
+        <td> <input class="form-control" type="text" name="nohp" value="<?php echo $data['no_hp'];?>"> </td>
     </tr>
     <tr>
         <td> Nomor rekening pekerja </td>
