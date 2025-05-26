@@ -32,8 +32,8 @@
                 <option value="">--Pilih--</option>
                 <?php 
                 include 'koneksi.php';
-                $query = mysqli_query($conn, "SELECT * FROM jabatan") or die(mysqli_error($conn));
-                while ($data = mysqli_fetch_array($query)) { ?>
+                $hug = mysqli_query($conn, "SELECT * FROM jabatan") or die(mysqli_error($conn));
+                while ($data = mysqli_fetch_array($hug)) { ?>
                     <option value="<?php echo $data['id_jabatan']; ?>">
                         <?php echo $data['namajabatan']; ?>
                     </option>
