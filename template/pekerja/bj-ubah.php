@@ -1,7 +1,7 @@
 <?php
     include 'koneksi.php';
     $query = mysqli_query($conn, "Select*from pekerja where id_pekerja = '$_GET[id_pekerja]'");
-    $data = mysqli_fetch_array($query);
+    $pekerja = mysqli_fetch_array($query);
             
 ?>
   
@@ -16,41 +16,44 @@
 
     <tr>
         <td> id pekerja </td>
-        <td> <input class="form-control" type="number" name="id" value="<?php echo $data['id_pekerja'];?>" readonly> </td>
+        <td> <input class="form-control" type="number" name="id" value="<?php echo $pekerja['id_pekerja'];?>" readonly> </td>
     </tr>
     <tr>
         <td> nama pekerja </td>
-        <td> <input class="form-control" type="text" name="nama" value="<?php echo $data['nama_pekerja'];?>"> </td>
+        <td> <input class="form-control" type="text" name="nama" value="<?php echo $pekerja['nama_pekerja'];?>"> </td>
     </tr>
     <tr>
         <td> Nomor HP pekerja </td>
-        <td> <input class="form-control" type="text" name="nohp" value="<?php echo $data['no_hp'];?>"> </td>
+        <td> <input class="form-control" type="text" name="nohp" value="<?php echo $pekerja['no_hp'];?>"> </td>
     </tr>
     <tr>
         <td> Nomor rekening pekerja </td>
-        <td> <input class="form-control" type="text" name="rekening" value="<?php echo $data['rekening'];?>"> </td>
+        <td> <input class="form-control" type="text" name="rekening" value="<?php echo $pekerja['rekening'];?>"> </td>
     </tr>
 
     <tr>
         <td> Jabatan </td>
+        <td>
         <select class="form-control" name="jabatan">
             <option value="">--Pilih--</option>
             <?php 
             include 'koneksi.php';
 
             // Misalnya variabel ini berisi id_jabatan dari database yang mau diedit
-            $id_jabatan_terpilih = $data['id_jabatan']; // kamu harus ambil data data dulu sebelumnya
+            $id_jabatan_terpilih = $pekerja['id_jabatan']; // kamu harus ambil data pekerja dulu sebelumnya
 
             $hug = mysqli_query($conn, "SELECT * FROM jabatan") or die(mysqli_error($conn));
-            while ($agar = mysqli_fetch_array($hug)) {
-                $selected = ($agar['id_jabatan'] == $id_jabatan_terpilih) ? 'selected' : '';
+            while ($data = mysqli_fetch_array($hug)) {
+                $selected = ($data['id_jabatan'] == $id_jabatan_terpilih) ? 'selected' : '';
                 echo "<option value='{$data['id_jabatan']}' $selected>{$data['namajabatan']}</option>";
             }
             ?>
         </select>
+        </td>
     </tr>
     <tr>
         <td> proyek </td>
+        <td>
         <select class="form-control" name="proyek">
             <option value="">--Pilih--</option>
             <?php 
@@ -66,6 +69,7 @@
             }
             ?>
         </select>
+        </td>
     </tr>
 
     <tr>
