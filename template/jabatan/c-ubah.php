@@ -16,7 +16,7 @@
     
     <tr>
         <td> id Jabatan </td>
-        <td> <input class="form-control" type="text" name="id" value="<?php echo $data['id_jabatan'];?>" readonly> </td>
+        <td> <input class="form-control" type="number" name="id" value="<?php echo $data['id_jabatan'];?>" readonly> </td>
     </tr>
     <tr>
         <td> nama jabatan baru </td>
@@ -24,7 +24,7 @@
     </tr>
     <tr>
         <td> gaji pokok(harian) </td>
-        <td> <input class="form-control" type="text" name="gaji" value="<?php echo $data['gajipokok'];?>"> </td>
+        <td> <input class="form-control" type="number" name="gaji" value="<?php echo $data['gajipokok'];?>"> </td>
     </tr>
 
     <tr>
