@@ -91,11 +91,11 @@
 
         // Perhatikan tanda kutip di $id juga, biar aman
         mysqli_query($conn, "UPDATE proyek SET 
-            nama_proyek   = '$nama', 
             id_klien      = '$klien',
+            nama_proyek   = '$nama', 
             jenisproyek  = '$tipe', 
-            tanggal       = '$tanggal', 
             lokasi        = '$lokasi' 
+            tanggal       = '$tanggal', 
             WHERE id_proyek = '$id'
         ") or die(mysqli_error($conn));
 
