@@ -44,7 +44,7 @@ if (isset($_POST['proses'])){
     $gaji= $_POST['gaji'];
     $pemilik= $_POST['pemilik'];
     
-    mysqli_query($conn, "INSERT INTO jabatan VALUES('$nama','$harga','$gaji')");
+    mysqli_query($conn, "INSERT INTO jabatan VALUES('$id','$nama','$gaji')");
     echo"<script>window.location.href = 'index.php?folder=jabatan&page=c-lihat';</script>";
 }
 ?>
