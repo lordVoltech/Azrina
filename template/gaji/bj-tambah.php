@@ -1,0 +1,96 @@
+<html>
+
+<div class="row">
+    <div class="col-lg-8 grid-margin stretch-card mx-auto">
+        <div class="card">
+            <div class="card-body">
+
+<form action="" method="post">
+<table class="table table-stripped">
+    <h4 style="text-align:center;">FORM TAMBAH</h4>
+    <tr>
+        <td> id gaji </td>
+        <td> <input class="form-control" type="number" name="id"> </td>
+    </tr>
+    <tr>
+        <td> nama gaji </td>
+        <td> <input class="form-control" type="text" name="nama"> </td>
+    </tr>
+    <tr>
+        <td> Nomor HP gaji </td>
+        <td> <input class="form-control" type="text" name="nohp"> </td>
+    </tr>
+    <tr>
+        <td> Nomor rekening gaji </td>
+        <td> <input class="form-control" type="text" name="rekening"> </td>
+    </tr>
+
+    <tr>
+        <td> jabatan </td>
+        <td>
+            <select class="form-control" name="jabatan">
+            <option value="">--Pilih--</option>
+            <?php 
+            include 'koneksi.php';
+
+            // Misalnya variabel ini berisi id_jabatan dari database yang mau diedit
+            $id_jabatan_terpilih = $gaji['id_jabatan']; // kamu harus ambil data gaji dulu sebelumnya
+
+            $hug = mysqli_query($conn, "SELECT * FROM jabatan") or die(mysqli_error($conn));
+            while ($data = mysqli_fetch_array($hug)) {
+                $selected = ($data['id_jabatan'] == $id_jabatan_terpilih) ? 'selected' : '';
+                echo "<option value='{$data['id_jabatan']}' $selected>{$data['namajabatan']}</option>";
+            }
+            ?>
+        </select>
+        </td>
+    </tr>
+    <tr>
+        <td> proyek </td>
+        <td>
+            <select class="form-control" name="proyek">
+                <option value="">--Pilih--</option>
+                <?php 
+                include 'koneksi.php';
+                $ayg = mysqli_query($conn, "SELECT * FROM proyek") or die(mysqli_error($conn));
+                while ($data = mysqli_fetch_array($ayg)) { ?>
+                    <option value="<?php echo $data['id_proyek']; ?>">
+                        <?php echo $data['nama_proyek']; ?>
+                    </option>
+                <?php } ?>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td><a class="badge badge-danger" href="gaji.php?page=lihat">Batal</a></td>
+        <td><button class="badge badge-success" type="submit" name="proses" value="Simpan"> Simpan</td>
+    </tr>
+
+</table>
+
+</form>
+
+</div>
+</div>
+</div>
+</div>
+</html>
+
+<?php
+
+if (isset($_POST['proses'])){
+    include 'koneksi.php';
+  
+    $id = $_POST['id'];
+    $nama = $_POST['nama'];
+    $nohp = $_POST['nohp'];
+    $rekening = $_POST['rekening'];
+    $jabatan= $_POST['jabatan'];
+    $proyek= $_POST['proyek'];
+
+    
+    mysqli_query($conn, "INSERT INTO gaji VALUES('$id','$nama','$nohp','$proyek','$jabatan','$rekening')");
+    echo"<script>window.location.href = 'index.php?folder=gaji&page=bj-lihat';</script>";
+}
+?>
