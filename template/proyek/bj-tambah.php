@@ -41,7 +41,7 @@
     </tr>
     <tr>
         <td> tanggal </td>
-        <td> <input class="form-control" type="text" name="tanggal"> </td>
+        <td> <input class="form-control" type="date" name="tanggal"> </td>
     </tr>
 
     <tr>

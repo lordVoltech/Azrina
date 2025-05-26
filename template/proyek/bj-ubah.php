@@ -17,31 +17,52 @@
     <h4>Form Ubah</h4>
 
     <tr>
-        <td> id Item </td>
+        <td> id proyek </td>
         <td> <input class="form-control" type="number" name="id-item" value="<?php echo $data['id_proyek'];?>" readonly> </td>
     </tr>
     <tr>
-        <td> Nama Item </td>
+        <td> Nama proyek </td>
         <td> <input class="form-control" type="text" name="nama" value="<?php echo $data['nama_proyek'];?>" > </td>
     </tr>
     <tr>
-        <td> Harga </td>
+        <td> Lokasi </td>
         <td> <input class="form-control" type="number" name="harga" value="<?php echo $data['lokasi'];?>" > </td>
     </tr>
-
     <tr>
-        <td> jenis_proyek </td>
+        <td> tanggal </td>
+        <td> <input class="form-control" type="date" name="tanggal" value="<?php echo $data['tanggal'];?>" > </td>
+    </tr>
+    
+    <tr>
+        <td>Jenis Proyek</td>
         <td>
             <select class="form-control" name="tipe" id="tipe">
-            <option value="barang" <?= ($data['jenis_proyek'] == 'barang') ? 'selected' : '' ?>>Barang</option>
-            <option value="jasa" <?= ($data['jenis_proyek'] == 'jasa') ? 'selected' : '' ?>>Jasa</option>
+                <option value="bangun_rumah" <?= ($data['jenis_proyek'] == 'bangun_rumah') ? 'selected' : '' ?>>Bangun Rumah</option>
+                <option value="renovasi" <?= ($data['jenis_proyek'] == 'renovasi') ? 'selected' : '' ?>>Renovasi</option>
+                <option value="bangun_gedung" <?= ($data['jenis_proyek'] == 'bangun_gedung') ? 'selected' : '' ?>>Bangun Gedung</option>
             </select>
         </td>
     </tr>
 
     <tr>
-        <td> tanggal </td>
-        <td> <input class="form-control" type="tanggal" name="tanggal" value="<?php echo $data['tanggal'];?>" > </td>
+        <td>Klien</td>
+        <td>
+            <select class="form-control" name="klien" id="klien">
+                <option value="">--Pilih--</option>
+                <?php 
+                include 'koneksi.php';
+
+                // Ambil id_klien yang sedang diedit (pastikan ini udah didefinisikan sebelumnya)
+                $id_klien_terpilih = $data['id_klien']; // misal variabel data adalah hasil dari SELECT pekerja WHERE id
+
+                $result = mysqli_query($conn, "SELECT * FROM klien") or die(mysqli_error($conn));
+                while ($klien = mysqli_fetch_array($result)) {
+                    $selected = ($klien['id_klien'] == $id_klien_terpilih) ? 'selected' : '';
+                    echo "<option value='{$klien['id_klien']}' $selected>{$klien['nama']}</option>";
+                }
+                ?>
+            </select>
+        </td>
     </tr>
 
     <tr>
