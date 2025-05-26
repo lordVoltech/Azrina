@@ -46,8 +46,13 @@
         <td>
             <select class="form-control" name="proyek">
                 <option value="">--Pilih--</option>
-                <?php $query=mysqli_query($conn, "SELECT * FROM proyek"); while ($data = mysqli_fetch_array($query)) { ?>
-                    <option value="<?php echo $data['id_proyek'];?>"><?php echo $data['nama_proyek'];?></option>
+                <?php 
+                include 'koneksi.php';
+                $ayg = mysqli_query($conn, "SELECT * FROM proyek") or die(mysqli_error($conn));
+                while ($data = mysqli_fetch_array($ayg)) { ?>
+                    <option value="<?php echo $data['id_proyek']; ?>">
+                        <?php echo $data['nama_proyek']; ?>
+                    </option>
                 <?php } ?>
             </select>
         </td>
