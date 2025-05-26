@@ -26,7 +26,7 @@
     </tr>
     <tr>
         <td> Lokasi </td>
-        <td> <input class="form-control" type="number" name="harga" value="<?php echo $data['lokasi'];?>" > </td>
+        <td> <input class="form-control" type="text" name="lokasi" value="<?php echo $data['lokasi'];?>" > </td>
     </tr>
     <tr>
         <td> tanggal </td>
