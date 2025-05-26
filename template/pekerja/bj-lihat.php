@@ -25,8 +25,8 @@
         <?php
             include 'koneksi.php';
             $limit = 10; // Jumlah baris per halaman
-            $hu = isset($_GET['hu']) ? $_GET['hu'] : 1;
-            $start = ($hu - 1) * $limit;
+            $page = isset($_GET['page']) ? $_GET['page'] : 1;
+            $start = ($page - 1) * $limit;
         
             $query = mysqli_query($conn, "SELECT * FROM pekerja LIMIT $start, $limit");
             while ($data=mysqli_fetch_array($query)){
