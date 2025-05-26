@@ -5,88 +5,8 @@
             
 ?>
   
-  <html>
-<!-- <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f1f1f1;
-        margin: 0;
-        padding: 20px;
-    }
+<html>
 
-    h3 {
-        color: #333;
-        font-size: 24px;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    form {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-    }
-
-    table {
-        width: 100%;
-    }
-
-    h4 {
-        text-align: center;
-        color: #666;
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
-
-    tr {
-        line-height: 2;
-    }
-
-    td:first-child {
-        text-align: right;
-        padding-right: 10px;
-        color: #666;
-        font-weight: bold;
-    }
-
-    input[type="text"] {
-        width: 100%;
-        padding: 5px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        font-size: 14px;
-    }
-
-    input[type="submit"] {
-        padding: 8px 15px;
-        background-color: #4CAF50;
-        color: #fff;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        font-size: 14px;
-    }
-
-    input[type="submit"]:hover {
-        background-color: #45a049;
-    }
-
-    .kembali {
-        
-        padding: 10px 10px;
-        background-color: #333;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 3px;
-        font-size: 14px;
-    }
-
-    .kembali:hover {
-        background-color: #555;
-    }
-</style> -->
 <div class="row">
     <div class="col-lg-8 grid-margin stretch-card mx-auto">
         <div class="card">
@@ -94,27 +14,22 @@
                 <form action="" method="post">
                 <table class="table table-stripped">
                     <h4>FORM UBAH ORANG</h4>
-
                     <tr>
                         <td> id klien </td>
-                        <td> <input class="form-control" type="number" name="id-item" value="<?php echo $data['id_klien'];?>" readonly> </td>
+                        <td> <input class="form-control" type="number" name="id" value="<?php echo $data['id_klien']; ?>" > </td>
                     </tr>
                     <tr>
                         <td> Nama klien </td>
-                        <td> <input class="form-control" type="text" name="nama" value="<?php echo $data['nama_cos'];?>" > </td>
+                        <td> <input  class="form-control" type="text" name="nama" value="<?php echo $data['nama']; ?>"> </td>
                     </tr>
-
-
                     <tr>
-                        <td> Jenis </td>
-                        <td>
-                            <select class="form-control" name="tipe" id="tipe">
-                            <option value="Member" <?= ($data['alamat'] == 'Member') ? 'selected' : '' ?>>Member</option>
-                            <option value="Belum Member" <?= ($data['alamat'] == 'Belum Member') ? 'selected' : '' ?>>Belum Member</option>
-                            </select>
-                        </td>
+                        <td> alamat </td>
+                        <td> <input  class="form-control" type="text" name="alamat" value="<?php echo $data['alamat']; ?>"> </td>
                     </tr>
-
+                    <tr>
+                        <td> no hp </td>
+                        <td> <input  class="form-control" type="text" name="nohp" value="<?php echo $data['no_hp']; ?>"> </td>
+                    </tr>
                     <tr>
                         <td><a class="badge badge-danger" href="c-lihat.php">Batal</a></td>
                         <td><button class="badge badge-success" type="submit" name="proses" value="Simpan">Simpan </td>
@@ -134,9 +49,10 @@ if (isset($_POST['proses'])){
   
     $id = $_POST['id-item'];
     $nama = $_POST['nama'];
-    $tipe = $_POST['tipe'];
+    $alamat = $_POST['alamat'];
+    $nohp = $_POST['nohp'];
 
-    mysqli_query($conn, "UPDATE klien SET nama_cos='$nama', alamat='$tipe' WHERE id_klien= $id");
+    mysqli_query($conn, "UPDATE klien SET nama='$nama', alamat='$alamat', no_hp='$nohp' WHERE id_klien= $id");
     echo"<script>window.location.href = 'index.php?folder=klien&page=c-lihat';</script>";
 }
 ?>
