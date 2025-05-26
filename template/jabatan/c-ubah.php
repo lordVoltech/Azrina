@@ -1,6 +1,6 @@
 <?php
     include 'koneksi.php';
-    $query = mysqli_query($conn, "Select*from jabatan where no_pol = '$_GET[no_pol]'");
+    $query = mysqli_query($conn, "Select*from jabatan where id_jabatan = '$_GET[id_jabatan]'");
     $data = mysqli_fetch_array($query);
             
 ?>
