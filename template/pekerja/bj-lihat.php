@@ -28,13 +28,13 @@
             $hu = isset($_GET['hu']) ? $_GET['hu'] : 1;
             $start = ($hu - 1) * $limit;
         
-            $query = mysqli_query($conn, "SELECT * FROM pekerja LIMIT $start, $limit");
+            $query = mysqli_query($conn, "SELECT * FROM pekerja join jabatan on pekerja.id_jabatan = jabatan.id_jabatan LIMIT $start, $limit");
             while ($data=mysqli_fetch_array($query)){
                 ?>
                 <tr>
                     <td><?php echo $data['id_pekerja'] ;?></td>
                     <td><?php echo $data['nama_pekerja'] ;?></td>
-                    <td><?php echo $data['id_jabatan'] ;?></td>
+                    <td><?php echo $data['namajabatan'] ;?></td>
                     <td><?php echo $data['no_hp'] ;?></td>
                     <td><?php echo $data['id_proyek'] ;?></td>
                     <td><?php echo $data['rekening'] ;?></td>
