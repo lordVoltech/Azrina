@@ -43,16 +43,24 @@
 </html>
 
 <?php
-
-if (isset($_POST['proses'])){
+if (isset($_POST['proses'])) {
     include 'koneksi.php';
-  
-    $nama = $_POST['id'];
-    $harga = $_POST['nama'];
-    $tipe= $_POST['tipe'];
-    $pemilik= $_POST['pemilik'];
-    
-    mysqli_query($conn, "UPDATE jabatan SET jenis_jabatan = '$harga', jenis_cc = '$tipe', id_cos = '$pemilik' WHERE no_pol='$nama'");
-    echo"<script>window.location.href = 'index.php?folder=jabatan&page=c-lihat';</script>";
+
+    $id     = $_POST['id'];        // id_jabatan
+    $nama   = $_POST['nama'];      // namajabatan
+    $gaji   = $_POST['gaji'];      // gaji
+
+    $query = "UPDATE jabatan SET 
+                namajabatan = '$nama',
+                gaji        = '$gaji'
+              WHERE id_jabatan = '$id'";
+
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        echo "<script>window.location.href = 'index.php?folder=jabatan&page=c-lihat';</script>";
+    } else {
+        echo "Update gagal: " . mysqli_error($conn);
+    }
 }
 ?>
