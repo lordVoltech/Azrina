@@ -28,10 +28,14 @@
             $hu = isset($_GET['hu']) ? $_GET['hu'] : 1;
             $start = ($hu - 1) * $limit;
         
+<<<<<<< HEAD
             $query = mysqli_query($conn, "SELECT pekerja.*, jabatan.namajabatan
             FROM pekerja
             JOIN jabatan ON pekerja.id_jabatan = jabatan.id_jabatan;
   LIMIT $start, $limit");
+=======
+            $query = mysqli_query($conn, "SELECT * FROM pekerja join jabatan on pekerja.id_jabatan = jabatan.id_jabatan LIMIT $start, $limit");
+>>>>>>> 8ab88a87d1bae74d346443adaebb33272f13a2ec
             while ($data=mysqli_fetch_array($query)){
                 ?>
                 <tr>

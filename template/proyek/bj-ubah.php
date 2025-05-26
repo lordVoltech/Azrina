@@ -18,7 +18,7 @@
 
     <tr>
         <td> id proyek </td>
-        <td> <input class="form-control" type="number" name="id-item" value="<?php echo $data['id_proyek'];?>" readonly> </td>
+        <td> <input class="form-control" type="number" name="id" value="<?php echo $data['id_proyek'];?>" readonly> </td>
     </tr>
     <tr>
         <td> Nama proyek </td>
@@ -80,7 +80,7 @@
 
 <?php
     if (isset($_POST['proses'])) {
-        include '../koneksi.php';
+        include 'koneksi.php';
     
         $id      = $_POST['id'];
         $nama    = $_POST['nama'];
@@ -91,11 +91,11 @@
 
         // Perhatikan tanda kutip di $id juga, biar aman
         mysqli_query($conn, "UPDATE proyek SET 
-            nama_proyek   = '$nama', 
             id_klien      = '$klien',
+            nama_proyek   = '$nama', 
             jenisproyek  = '$tipe', 
-            tanggal       = '$tanggal', 
-            lokasi        = '$lokasi' 
+            lokasi        = '$lokasi',
+            tanggal       = '$tanggal' 
             WHERE id_proyek = '$id'
         ") or die(mysqli_error($conn));
 
