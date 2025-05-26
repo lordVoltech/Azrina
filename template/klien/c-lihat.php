@@ -4,7 +4,7 @@
     <div class="col-lg-8 grid-margin stretch-card mx-auto">
         <div class="card">
             <div class="card-body">
-                <h3 style="text-align : center;"> Data Anggota</h3>
+                <h3 style="text-align : center;"> Data klien</h3>
                 <form>
                     <a class="badge badge-success" href="index.php?folder=klien&page=c-tambah">Tambah</a>
                     <!-- <a class="kembali" href="../menu.php">Kembali</a> -->
