@@ -30,7 +30,7 @@
                 <tr>
                     <td><?php echo $data['id_proyek'] ;?></td>
                     <td><?php echo $data['nama_proyek'] ;?></td>
-                    <td><?php echo $data['jenis_proyek'] ;?></td>
+                    <td><?php echo $data['jenisproyek'] ;?></td>
                     <td><?php echo $data['lokasi'] ;?></td>
                     <td><?php echo $data['tanggal'] ;?></td>
                     <td>
