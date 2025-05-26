@@ -1,6 +1,6 @@
 <?php
     include 'koneksi.php';
-    $query = mysqli_query($conn, "Select*from pegawai where id_pegawai = '$_GET[id_pegawai]'");
+    $query = mysqli_query($conn, "Select*from pekerja where id_pekerja = '$_GET[id_pekerja]'");
     $data = mysqli_fetch_array($query);
             
 ?>
@@ -16,7 +16,7 @@
 
     <tr>
         <td> id Item </td>
-        <td> <input class="form-control" type="number" name="id-item" value="<?php echo $data['id_pegawai'];?>" readonly> </td>
+        <td> <input class="form-control" type="number" name="id-item" value="<?php echo $data['id_pekerja'];?>" readonly> </td>
     </tr>
     <tr>
         <td> Nama Item </td>
@@ -34,7 +34,7 @@
     </tr>
 
     <tr>
-        <td><a class="badge badge-danger" href="index.php?folder=pegawai&page=bj-lihat">Batal</a></td>
+        <td><a class="badge badge-danger" href="index.php?folder=pekerja&page=bj-lihat">Batal</a></td>
         <td><button class="badge badge-success" type="submit" name="proses" value="Simpan"> Simpan </td>
     </tr>
 </form>
@@ -56,7 +56,7 @@ if (isset($_POST['proses'])){
     $tipe= $_POST['tipe'];
 
     
-    mysqli_query($conn, "UPDATE pegawai SET nama='$nama', jabatan='$tipe' WHERE id_pegawai= '$id'");
-    echo"<script>window.location.href = 'index.php?folder=pegawai&page=bj-lihat';</script>";
+    mysqli_query($conn, "UPDATE pekerja SET nama='$nama', jabatan='$tipe' WHERE id_pekerja= '$id'");
+    echo"<script>window.location.href = 'index.php?folder=pekerja&page=bj-lihat';</script>";
 }
 ?>

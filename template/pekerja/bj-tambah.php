@@ -9,11 +9,11 @@
 <table class="table table-stripped">
     <h4 style="text-align:center;">FORM TAMBAH</h4>
     <tr>
-        <td> id Pegawai </td>
+        <td> id pekerja </td>
         <td> <input class="form-control" type="number" name="nama"> </td>
     </tr>
     <tr>
-        <td> nama pegawai </td>
+        <td> nama pekerja </td>
         <td> <input class="form-control" type="text" name="harga"> </td>
     </tr>
 
@@ -28,7 +28,7 @@
     </tr>
 
     <tr>
-        <td><a class="badge badge-danger" href="pegawai.php?page=lihat">Batal</a></td>
+        <td><a class="badge badge-danger" href="pekerja.php?page=lihat">Batal</a></td>
         <td><button class="badge badge-success" type="submit" name="proses" value="Simpan"> Simpan</td>
     </tr>
 
@@ -52,7 +52,7 @@ if (isset($_POST['proses'])){
     $tipe= $_POST['tipe'];
 
     
-    mysqli_query($conn, "INSERT INTO pegawai VALUES('$nama','$harga','$tipe')");
-    echo"<script>window.location.href = 'index.php?folder=pegawai&page=bj-lihat';</script>";
+    mysqli_query($conn, "INSERT INTO pekerja VALUES('$nama','$harga','$tipe')");
+    echo"<script>window.location.href = 'index.php?folder=pekerja&page=bj-lihat';</script>";
 }
 ?>
