@@ -1,6 +1,6 @@
 <?php
     include 'koneksi.php';
-    $query = mysqli_query($conn, "Select*from motor where no_pol = '$_GET[no_pol]'");
+    $query = mysqli_query($conn, "Select*from jabatan where no_pol = '$_GET[no_pol]'");
     $data = mysqli_fetch_array($query);
             
 ?>
@@ -18,8 +18,8 @@
         <td> <input class="form-control" type="text" name="id" value="<?php echo $data['no_pol'];?>"> </td>
     </tr>
     <tr>
-        <td> Motor </td>
-        <td> <input class="form-control" type="text" name="nama" value="<?php echo $data['jenis_motor'];?>"> </td>
+        <td> jabatan </td>
+        <td> <input class="form-control" type="text" name="nama" value="<?php echo $data['jenis_jabatan'];?>"> </td>
     </tr>
     <tr>
         <td> CC Mesin </td>
@@ -41,7 +41,7 @@
   </td>
 
     <tr>
-        <td><a class="badge badge-danger" href="index.php?folder=motor&page=c-lihat">Batal</a></td>
+        <td><a class="badge badge-danger" href="index.php?folder=jabatan&page=c-lihat">Batal</a></td>
         <td><button class="badge badge-success" type="submit" name="proses" value="Simpan"> Simpan </td>
     </tr>
 
@@ -65,7 +65,7 @@ if (isset($_POST['proses'])){
     $tipe= $_POST['tipe'];
     $pemilik= $_POST['pemilik'];
     
-    mysqli_query($conn, "UPDATE motor SET jenis_motor = '$harga', jenis_cc = '$tipe', id_cos = '$pemilik' WHERE no_pol='$nama'");
-    echo"<script>window.location.href = 'index.php?folder=motor&page=c-lihat';</script>";
+    mysqli_query($conn, "UPDATE jabatan SET jenis_jabatan = '$harga', jenis_cc = '$tipe', id_cos = '$pemilik' WHERE no_pol='$nama'");
+    echo"<script>window.location.href = 'index.php?folder=jabatan&page=c-lihat';</script>";
 }
 ?>
