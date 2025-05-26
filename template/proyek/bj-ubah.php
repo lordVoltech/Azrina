@@ -79,17 +79,26 @@
 </html>
 
 <?php
-
-if (isset($_POST['proses'])){
-    include '../koneksi.php';
-  
-    $id = $_POST['id-item'];
-    $nama = $_POST['nama'];
-    $harga = $_POST['harga'];
-    $tipe= $_POST['tipe'];
-    $tanggal= $_POST['tanggal'];
+    if (isset($_POST['proses'])) {
+        include '../koneksi.php';
     
-    mysqli_query($conn, "UPDATE proyek SET nama_proyek='$nama', lokasi='$harga', jenis_proyek='$tipe', tanggal='$tanggal' WHERE id_proyek= $id");
-    echo"<script>window.location.href = 'index.php?folder=proyek&page=bj-lihat';</script>";
-}
+        $id      = $_POST['id'];
+        $nama    = $_POST['nama'];
+        $klien   = $_POST['klien'];
+        $tipe    = $_POST['tipe'];
+        $tanggal = $_POST['tanggal'];
+        $lokasi  = $_POST['lokasi'];
+
+        // Perhatikan tanda kutip di $id juga, biar aman
+        mysqli_query($conn, "UPDATE proyek SET 
+            nama_proyek   = '$nama', 
+            id_klien      = '$klien',
+            jenis_proyek  = '$tipe', 
+            tanggal       = '$tanggal', 
+            lokasi        = '$lokasi' 
+            WHERE id_proyek = '$id'
+        ") or die(mysqli_error($conn));
+
+        echo "<script>window.location.href = 'index.php?folder=proyek&page=bj-lihat';</script>";
+    }
 ?>
