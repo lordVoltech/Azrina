@@ -7,7 +7,7 @@
 <form>
 
 <h4>TABEL PEKERJA</h4>
-<a class="badge badge-success" href="index.php?folder=pekerja&page=bj-tambah">Tambah</a>
+<a class="badge badge-success" href="index.php?folder=absensi&page=bj-tambah">Tambah</a>
 <!-- <a class="kembali" href="../menu.php">Kembali</a> -->
 <table class="table table-stripped" width="100%">
     <thead>
