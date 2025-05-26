@@ -37,9 +37,9 @@
         <td>Jenis Proyek</td>
         <td>
             <select class="form-control" name="tipe" id="tipe">
-                <option value="bangun_rumah" <?= ($data['jenisproyek'] == 'bangun_rumah') ? 'selected' : '' ?>>Bangun Rumah</option>
+                <option value="bangun rumah" <?= ($data['jenisproyek'] == 'bangun rumah') ? 'selected' : '' ?>>Bangun Rumah</option>
                 <option value="renovasi" <?= ($data['jenisproyek'] == 'renovasi') ? 'selected' : '' ?>>Renovasi</option>
-                <option value="bangun_gedung" <?= ($data['jenisproyek'] == 'bangun_gedung') ? 'selected' : '' ?>>Bangun Gedung</option>
+                <option value="bangun gedung" <?= ($data['jenisproyek'] == 'bangun gedung') ? 'selected' : '' ?>>Bangun Gedung</option>
             </select>
         </td>
     </tr>
