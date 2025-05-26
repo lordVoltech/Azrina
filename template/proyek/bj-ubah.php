@@ -18,7 +18,7 @@
 
     <tr>
         <td> id proyek </td>
-        <td> <input class="form-control" type="number" name="id-item" value="<?php echo $data['id_proyek'];?>" readonly> </td>
+        <td> <input class="form-control" type="number" name="id" value="<?php echo $data['id_proyek'];?>" readonly> </td>
     </tr>
     <tr>
         <td> Nama proyek </td>
