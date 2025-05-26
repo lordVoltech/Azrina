@@ -28,13 +28,17 @@
     <tr>
         <td> jabatan </td>
         <td>
-            <select class="form-control" name="jabatan">
-                <option value="">--Pilih--</option>
-                <?php $query=mysqli_query($conn, "SELECT * FROM jabatan"); while ($data = mysqli_fetch_array($query)) { ?>
-                    <option value="<?php echo $data['id_jabatan'];?>"><?php echo $data['namajabatan'];?></option>
-                <?php } ?>
-            </select>
-        </td>
+        <select class="form-control" name="jabatan">
+            <option value="">--Pilih--</option>
+            <?php 
+            $query = mysqli_query($conn, "SELECT * FROM jabatan") or die(mysqli_error($conn));
+            while ($data = mysqli_fetch_array($query)) { ?>
+                <option value="<?php echo $data['id_jabatan']; ?>">
+                    <?php echo $data['namajabatan']; ?>
+                </option>
+            <?php } ?>
+        </select>
+    </td>
     </tr>
     <tr>
         <td> proyek </td>
