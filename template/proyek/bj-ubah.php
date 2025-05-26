@@ -94,8 +94,8 @@
             id_klien      = '$klien',
             nama_proyek   = '$nama', 
             jenisproyek  = '$tipe', 
-            lokasi        = '$lokasi' 
-            tanggal       = '$tanggal', 
+            lokasi        = '$lokasi',
+            tanggal       = '$tanggal' 
             WHERE id_proyek = '$id'
         ") or die(mysqli_error($conn));
 
