@@ -31,8 +31,8 @@
                                     <td><?php echo $data['namajabatan'] ;?></td>
                                     <td><?php echo $data['gajipokok'] ;?></td>
                                     <td>
-                                    <a class="badge badge-primary" href="index.php?folder=jabatan&page=c-ubah&no_pol=<?php echo $data['no_pol'];?>" >Edit</a>
-                                    <a class="badge badge-danger" href="jabatan/c-hapus.php?no_pol=<?php echo $data['no_pol']; ?>" onclick="return confirm('Anda yakin ingin menghapus data ini?')">Hapus</a>				
+                                    <a class="badge badge-primary" href="index.php?folder=jabatan&page=c-ubah&id_jabatan=<?php echo $data['id_jabatan'];?>" >Edit</a>
+                                    <a class="badge badge-danger" href="jabatan/c-hapus.php?id_jabatan=<?php echo $data['id_jabatan']; ?>" onclick="return confirm('Anda yakin ingin menghapus data ini?')">Hapus</a>				
                                     </td>
                                 </tr>
                                 </tr>
