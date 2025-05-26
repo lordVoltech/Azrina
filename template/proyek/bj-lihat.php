@@ -12,8 +12,8 @@
     <tr>
         <th>No</th>
         <th>Nama</th>
-        <th>Harga</th>
         <th>jenis_proyek</th>
+        <th>Lokasi</th>
         <th>tanggal</th>
         <th>Aksi</th>
     </tr>
