@@ -93,7 +93,7 @@
         mysqli_query($conn, "UPDATE proyek SET 
             nama_proyek   = '$nama', 
             id_klien      = '$klien',
-            jenis_proyek  = '$tipe', 
+            jenisproyek  = '$tipe', 
             tanggal       = '$tanggal', 
             lokasi        = '$lokasi' 
             WHERE id_proyek = '$id'
