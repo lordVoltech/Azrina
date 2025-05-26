@@ -48,9 +48,9 @@
         <td> jenis_proyek </td>
         <td>
             <select class="form-control" name="tipe" id="tipe">
-            <option value="bangun_rumah">bangun Rumah</option>
+            <option value="bangun rumah">bangun Rumah</option>
             <option value="renovasi">renovasi</option>
-            <option value="bangun_gedung">bangun gedung</option>
+            <option value="bangun gedung">bangun gedung</option>
             </select>
         </td>
     </tr>
