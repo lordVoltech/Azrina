@@ -60,11 +60,11 @@
             include 'koneksi.php';
 
             // Misalnya variabel ini berisi id_proyek dari database yang mau diedit
-            $id_proyek_terpilih = $data['id_proyek']; // kamu harus ambil data pekerja dulu sebelumnya
+            $id_proyek_terpilih = $pekerja['id_proyek']; // kamu harus ambil data pekerja dulu sebelumnya
 
             $hug = mysqli_query($conn, "SELECT * FROM proyek") or die(mysqli_error($conn));
-            while ($ayam = mysqli_fetch_array($hug)) {
-                $selected = ($ayam['id_proyek'] == $id_proyek_terpilih) ? 'selected' : '';
+            while ($data = mysqli_fetch_array($hug)) {
+                $selected = ($data['id_proyek'] == $id_proyek_terpilih) ? 'selected' : '';
                 echo "<option value='{$data['id_proyek']}' $selected>{$data['nama_proyek']}</option>";
             }
             ?>
