@@ -31,7 +31,7 @@
                                     ?>
                                     <tr>
                                         <td><?php echo $data['id_klien'] ;?></td>
-                                        <td><?php echo $data['nama_cos'] ;?></td>
+                                        <td><?php echo $data['nama'] ;?></td>
                                         <td><?php echo $data['alamat'] ;?></td>
                                         <td><?php echo $data['no_hp'] ;?></td>
                                         <td>
