@@ -52,7 +52,7 @@ if (isset($_POST['proses'])) {
 
     $query = "UPDATE jabatan SET 
                 namajabatan = '$nama',
-                gaji        = '$gaji'
+                gajipokok    = '$gaji'
               WHERE id_jabatan = '$id'";
 
     $result = mysqli_query($conn, $query);
