@@ -86,16 +86,30 @@
 </html>
 
 <?php
-
-if (isset($_POST['proses'])){
+if (isset($_POST['proses'])) {
     include 'koneksi.php';
-  
-    $id = $_POST['id-item'];
-    $nama = $_POST['nama'];
-    $tipe= $_POST['tipe'];
 
-    
-    mysqli_query($conn, "UPDATE pekerja SET nama='$nama', jabatan='$tipe' WHERE id_pekerja= '$id'");
-    echo"<script>window.location.href = 'index.php?folder=pekerja&page=bj-lihat';</script>";
+    $id       = $_POST['id'];
+    $nama     = $_POST['nama'];
+    $nohp     = $_POST['nohp'];
+    $rekening = $_POST['rekening'];
+    $jabatan  = $_POST['jabatan'];
+    $proyek   = $_POST['proyek'];
+
+    $query = "UPDATE pekerja SET 
+                nama_pekerja = '$nama',
+                no_hp        = '$nohp',
+                rekening     = '$rekening',
+                id_jabatan   = '$jabatan',
+                id_proyek    = '$proyek'
+              WHERE id_pekerja = '$id'";
+
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        echo "<script>window.location.href = 'index.php?folder=pekerja&page=bj-lihat';</script>";
+    } else {
+        echo "Update gagal: " . mysqli_error($conn);
+    }
 }
 ?>
