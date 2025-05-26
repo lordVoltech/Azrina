@@ -29,16 +29,20 @@
         <td> jabatan </td>
         <td>
             <select class="form-control" name="jabatan">
-                <option value="">--Pilih--</option>
-                <?php 
-                include 'koneksi.php';
-                $hug = mysqli_query($conn, "SELECT * FROM jabatan") or die(mysqli_error($conn));
-                while ($data = mysqli_fetch_array($hug)) { ?>
-                    <option value="<?php echo $data['id_jabatan']; ?>">
-                        <?php echo $data['namajabatan']; ?>
-                    </option>
-                <?php } ?>
-            </select>
+            <option value="">--Pilih--</option>
+            <?php 
+            include 'koneksi.php';
+
+            // Misalnya variabel ini berisi id_jabatan dari database yang mau diedit
+            $id_jabatan_terpilih = $pekerja['id_jabatan']; // kamu harus ambil data pekerja dulu sebelumnya
+
+            $hug = mysqli_query($conn, "SELECT * FROM jabatan") or die(mysqli_error($conn));
+            while ($data = mysqli_fetch_array($hug)) {
+                $selected = ($data['id_jabatan'] == $id_jabatan_terpilih) ? 'selected' : '';
+                echo "<option value='{$data['id_jabatan']}' $selected>{$data['namajabatan']}</option>";
+            }
+            ?>
+        </select>
         </td>
     </tr>
     <tr>

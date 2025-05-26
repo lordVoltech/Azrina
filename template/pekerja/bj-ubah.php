@@ -15,22 +15,57 @@
     <h4>FORM UBAH</h4>
 
     <tr>
-        <td> id Item </td>
-        <td> <input class="form-control" type="number" name="id-item" value="<?php echo $data['id_pekerja'];?>" readonly> </td>
+        <td> id pekerja </td>
+        <td> <input class="form-control" type="number" name="id" value="<?php echo $data['id_pekerja'];?>" readonly> </td>
     </tr>
     <tr>
-        <td> Nama Item </td>
-        <td> <input class="form-control" type="text" name="nama" value="<?php echo $data['nama'];?>" > </td>
+        <td> nama pekerja </td>
+        <td> <input class="form-control" type="text" name="nama" value="<?php echo $data['nama'];?>"> </td>
+    </tr>
+    <tr>
+        <td> Nomor HP pekerja </td>
+        <td> <input class="form-control" type="text" name="nohp" value="<?php echo $data['nohp'];?>"> </td>
+    </tr>
+    <tr>
+        <td> Nomor rekening pekerja </td>
+        <td> <input class="form-control" type="text" name="rekening" value="<?php echo $data['rekening'];?>"> </td>
     </tr>
 
     <tr>
         <td> Jabatan </td>
-        <td>
-            <select class="form-control" name="tipe" id="tipe">
-            <option value="kasir" <?= ($data['jabatan'] == 'kasir') ? 'selected' : '' ?>>kasir</option>
-            <option value="mekanik" <?= ($data['jabatan'] == 'mekanik') ? 'selected' : '' ?>>mekanik</option>
-            </select>
-        </td>
+        <select class="form-control" name="jabatan">
+            <option value="">--Pilih--</option>
+            <?php 
+            include 'koneksi.php';
+
+            // Misalnya variabel ini berisi id_jabatan dari database yang mau diedit
+            $id_jabatan_terpilih = $pekerja['id_jabatan']; // kamu harus ambil data pekerja dulu sebelumnya
+
+            $hug = mysqli_query($conn, "SELECT * FROM jabatan") or die(mysqli_error($conn));
+            while ($data = mysqli_fetch_array($hug)) {
+                $selected = ($data['id_jabatan'] == $id_jabatan_terpilih) ? 'selected' : '';
+                echo "<option value='{$data['id_jabatan']}' $selected>{$data['namajabatan']}</option>";
+            }
+            ?>
+        </select>
+    </tr>
+    <tr>
+        <td> proyek </td>
+        <select class="form-control" name="proyek">
+            <option value="">--Pilih--</option>
+            <?php 
+            include 'koneksi.php';
+
+            // Misalnya variabel ini berisi id_proyek dari database yang mau diedit
+            $id_proyek_terpilih = $pekerja['id_proyek']; // kamu harus ambil data pekerja dulu sebelumnya
+
+            $hug = mysqli_query($conn, "SELECT * FROM proyek") or die(mysqli_error($conn));
+            while ($data = mysqli_fetch_array($hug)) {
+                $selected = ($data['id_proyek'] == $id_proyek_terpilih) ? 'selected' : '';
+                echo "<option value='{$data['id_proyek']}' $selected>{$data['nama_proyek']}</option>";
+            }
+            ?>
+        </select>
     </tr>
 
     <tr>
