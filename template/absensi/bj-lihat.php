@@ -4,9 +4,9 @@
 <div class="card">
 <div class="card-body">
 
-<form>
+<form> <?php // Tag form di sini mungkin tidak diperlukan jika tidak ada input submit di dalamnya, tapi saya biarkan sesuai kode asli ?>
 <h4>TABEL Absensi</h4>
-<a class="badge badge-success" href="index.php?folder=absensi&page=bj-tambah">Tambah</a>
+<a class="badge badge-success" href="index.php?folder=absensi&page=bj-tambah">Tambah Absensi</a>
 <table class="table table-stripped" width="100%">
     <thead>
     <tr>
@@ -21,14 +21,18 @@
         <th>Aksi</th>
     </tr>
     </thead>
-    <tbody> <?php
+    <tbody>
+        <?php
             include 'koneksi.php'; // Pastikan file ini ada dan koneksi $conn berhasil
             $limit = 10; // Jumlah baris per halaman
+            // Asumsikan nama file/page yang menampilkan tabel ini adalah 'bj-lihat-absensi'
+            $nama_page_ini = 'bj-lihat-absensi'; 
+
             $hu = isset($_GET['hu']) ? (int)$_GET['hu'] : 1; // Ambil halaman saat ini, pastikan integer
             $start = ($hu - 1) * $limit;
             $no = $start + 1; // Untuk penomoran baris
 
-            // Query untuk mengambil data absensi dengan join ke tabel pekerja (untuk nama pekerja dan nama mandor) dan proyek
+            // Query untuk mengambil data absensi dengan join
             $query_sql = "SELECT
                             absensi.id_absensi,
                             pekerja.nama_pekerja AS nama_pekerja_absensi,
@@ -37,8 +41,8 @@
                             absensi.tgl_absensi,
                             absensi.status_hadir,
                             absensi.lembur,
-                            absensi.keterangan,
-                            absensi.id_pekerja -- Tetap ambil id_pekerja untuk link aksi jika masih diperlukan
+                            absensi.keterangan
+                            -- absensi.id_pekerja tidak lagi secara eksplisit dibutuhkan untuk link edit absensi
                         FROM
                             absensi
                         LEFT JOIN
@@ -47,15 +51,15 @@
                             proyek ON absensi.id_proyek = proyek.id_proyek
                         LEFT JOIN
                             pekerja AS mandor ON absensi.id_mandor = mandor.id_pekerja
+                        ORDER BY absensi.tgl_absensi DESC, absensi.id_absensi DESC -- Contoh Urutan
                         LIMIT $start, $limit";
             
-            $query = mysqli_query($conn, $query_sql);
+            $query_data_absensi = mysqli_query($conn, $query_sql);
 
-            if (!$query) {
-                // Jika query gagal, tampilkan error SQL untuk debugging
+            if (!$query_data_absensi) {
                 echo "<tr><td colspan='9'>Error: " . mysqli_error($conn) . "</td></tr>";
-            } elseif (mysqli_num_rows($query) > 0) {
-                while ($data = mysqli_fetch_array($query)) {
+            } elseif (mysqli_num_rows($query_data_absensi) > 0) {
+                while ($data = mysqli_fetch_array($query_data_absensi)) {
                     ?>
                     <tr>
                         <td><?php echo $no++; ?></td>
@@ -67,8 +71,17 @@
                         <td><?php echo ($data['lembur'] == 1) ? 'Ya' : 'Tidak'; ?></td>
                         <td><?php echo htmlspecialchars($data['keterangan']); ?></td>
                         <td>
-                            <a class="badge badge-primary" href="index.php?folder=pekerja&page=bj-ubah&id_pekerja=<?php echo $data['id_pekerja']; ?>">Edit Pekerja</a>
-                            <a class="badge badge-danger" href="pekerja/bj-hapus.php?id_pekerja=<?php echo $data['id_pekerja']; ?>" onclick="return confirm('Anda yakin ingin menghapus data pekerja ini?')">Hapus Pekerja</a>
+                            <a class="badge badge-primary" href="index.php?folder=absensi&page=bj-ubah-absensi&id_absensi=<?php echo $data['id_absensi']; ?>">Edit Absensi</a>
+                            
+                            <?php // Tombol Hapus Absensi (Contoh jika Anda ingin menghapus absensi, bukan pekerja)
+                                  // Jika Anda masih ingin tombol hapus pekerja, biarkan seperti kode asli Anda.
+                                  // Baris di bawah ini adalah contoh untuk HAPUS ABSENSI:
+                            ?>
+                            <a class="badge badge-danger" href="index.php?folder=absensi&page=bj-hapus-absensi&id_absensi=<?php echo $data['id_absensi']; ?>" onclick="return confirm('Anda yakin ingin menghapus data absensi ini?')">Hapus Absensi</a>
+                            
+                            <?php // Jika Anda ingin mempertahankan tombol hapus pekerja dari kode asli Anda:
+                                  // <a class="badge badge-danger" href="pekerja/bj-hapus.php?id_pekerja=<?php // echo $data_asli['id_pekerja']; // Anda perlu select id_pekerja jika mau pakai ini ?>" onclick="return confirm('Anda yakin ingin menghapus data pekerja terkait absensi ini?')">Hapus Pekerja</a>
+                            ?>
                         </td>
                     </tr>
                 <?php
@@ -91,21 +104,21 @@
     if ($total_pages > 1) { // Tampilkan paginasi hanya jika ada lebih dari 1 halaman
         // Tombol Back/Previous
         if ($hu > 1) {
-            echo '<a class="badge badge-info" href="index.php?folder=absensi&page=nama_file_anda&hu=' . ($hu - 1) . '">Back</a> '; // Ganti nama_file_anda.php
+            echo '<a class="badge badge-info" href="index.php?folder=absensi&page=' . $nama_page_ini . '&hu=' . ($hu - 1) . '">Back</a> ';
         }
 
         // Link halaman
         for ($i = 1; $i <= $total_pages; $i++) {
             if ($i == $hu) {
-                echo '<a class="badge badge-secondary" href="index.php?folder=absensi&page=nama_file_anda&hu=' . $i . '">' . $i . '</a> '; // Ganti nama_file_anda.php
+                echo '<a class="badge badge-secondary" href="index.php?folder=absensi&page=' . $nama_page_ini . '&hu=' . $i . '">' . $i . '</a> ';
             } else {
-                echo '<a class="badge badge-light" href="index.php?folder=absensi&page=nama_file_anda&hu=' . $i . '">' . $i . '</a> '; // Ganti nama_file_anda.php
+                echo '<a class="badge badge-light" href="index.php?folder=absensi&page=' . $nama_page_ini . '&hu=' . $i . '">' . $i . '</a> ';
             }
         }
 
         // Tombol Next
         if ($hu < $total_pages) {
-            echo '<a class="badge badge-info" href="index.php?folder=absensi&page=nama_file_anda&hu=' . ($hu + 1) . '">Next</a>'; // Ganti nama_file_anda.php
+            echo '<a class="badge badge-info" href="index.php?folder=absensi&page=' . $nama_page_ini . '&hu=' . ($hu + 1) . '">Next</a>';
         }
     }
     ?>
