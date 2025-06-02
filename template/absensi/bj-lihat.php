@@ -1,3 +1,10 @@
+<html>
+<div class="row">
+<div class="col-lg-8 grid-margin stretch-card mx-auto">
+<div class="card">
+<div class="card-body">
+
+<form>
 <h4>TABEL Absensi</h4>
 <a class="badge badge-success" href="index.php?folder=absensi&page=bj-tambah">Tambah</a>
 <table class="table table-stripped" width="100%">
@@ -103,3 +110,10 @@
     }
     ?>
 </div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</html>
